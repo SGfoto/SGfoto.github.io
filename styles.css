@@ -36,7 +36,7 @@ header {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .image-grid {
