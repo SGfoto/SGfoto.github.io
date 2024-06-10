@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         imageGrid.innerHTML = '';
 
         // Fetch image URLs
-        fetch(`albums/${albumName}/`)
+        fetch(`https://github.com/SGfoto.github.io/tree/main/albums/${albumName}/`)
             .then(response => response.text())
             .then(html => {
                 const parser = new DOMParser();
