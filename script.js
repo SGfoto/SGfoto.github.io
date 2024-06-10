@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const albums = document.querySelectorAll('.album');
+    const albums = document.querySelectorAll('.album-list');
     const gallerySection = document.getElementById('gallery');
     const albumTitle = document.getElementById('album-title');
     const imageGrid = document.querySelector('.image-grid');
@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let images = [];
 
     albums.forEach(album => {
+        console.log(album);
         album.addEventListener('click', () => {
             currentAlbum = album.getAttribute('data-album');
             loadAlbum(currentAlbum);
