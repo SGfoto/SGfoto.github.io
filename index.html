@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photo Gallery</title>
+    <title>SG Foto</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/3b161c540c.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>My Photo Gallery</h1>
+            <h1><span style="position: relative; bottom: 5px; right:3px;">📸</span>SG Foto</h1>
         </header>
+        <hr style="margin-bottom:12px;">
         <main>
             <section id="albums">
-                <h2>Albums</h2>
+                <h2 style="padding-bottom:8px;">Albums</h2>
                 <div class="album-list">
                     <div class="album" data-album="album1">
                         <h3>Album 1</h3>
@@ -25,7 +27,7 @@
                 </div>
             </section>
             <section id="gallery" class="hidden">
-                <h2 id="album-title"></h2>
+                <h2 id="album-title" style="padding-bottom:8px;"></h2>
                 <div class="image-grid"></div>
                 <button id="back-to-albums">Back to Albums</button>
             </section>
@@ -40,6 +42,49 @@
             </div>
         </main>
     </div>
+    <footer class="footer">
+        <div class="container row">
+        <div class="footer-col">
+            <h4>SG Foto</h4>
+            <ul>
+            <li><a href="#">about us</a></li>
+            <!-- <li><a href="#">our services</a></li> -->
+            <li><a href="/privacy">privacy policy</a></li>
+            <!-- <li><a href="#">visit website</a></li> -->
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>get help</h4>
+            <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Contact us</a></li>
+            <!-- <li><a href="#">shipping</a></li> -->
+            <!-- <li><a href="#">returns</a></li> -->
+            <!-- <li><a href="#">order status</a></li> -->
+            <!-- <li><a href="#">payment options</a></li> -->
+            </ul>
+        </div>
+        <div class="footer-col">
+            <!-- <h4>online shop</h4> -->
+            <ul>
+            <!-- <li><a href="#">download</a></li> -->
+            <!-- <li><a href="#">changelog</a></li> -->
+            <!-- <li><a href="#">github</a></li> -->
+            <!-- <li><a href="#">all version</a></li> -->
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>follow us</h4>
+            <div class="social-links">
+            <!-- <a href="#"><i class="fa-brands fa-facebook-f"></i></a> -->
+            <!-- <a href="#"><i class="fa-brands fa-x-twitter"></i></a> -->
+            <a href="https://instagram.com/senna.foto"><i class="fa-brands fa-instagram"></i></a>
+            <!-- <a href="#"><i class="fa-brands fa-linkedin-in"></i></a> -->
+            </div>
+        </div>
+        <div style="padding-top: 35px;"><b>Copyright ©SG Foto 2024 - All rights reserved</b></div>
+        </div>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
