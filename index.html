@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>My Photo Gallery</h1>
+        </header>
+        <main>
+            <section id="albums">
+                <h2>Albums</h2>
+                <div class="album-list">
+                    <div class="album" data-album="album1">
+                        <h3>Album 1</h3>
+                    </div>
+                    <div class="album" data-album="album2">
+                        <h3>Album 2</h3>
+                    </div>
+                    <!-- Add more albums as needed -->
+                </div>
+            </section>
+            <section id="gallery" class="hidden">
+                <h2 id="album-title"></h2>
+                <div class="image-grid"></div>
+                <button id="back-to-albums">Back to Albums</button>
+            </section>
+            <div id="lightbox" class="hidden">
+                <div class="lightbox-content">
+                    <span class="close">&times;</span>
+                    <img class="lightbox-image" src="" alt="">
+                    <button class="prev">&#10094;</button>
+                    <button class="next">&#10095;</button>
+                    <img src="assets/download_icon.svg" class="download-icon" alt="Download Icon">
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
