@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let currentAlbum = '';
     let currentImageIndex = 0;
+    let images = [];
 
     albums.forEach(album => {
         album.addEventListener('click', () => {
@@ -39,14 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
     prevBtn.addEventListener('click', () => {
         if (currentImageIndex > 0) {
             currentImageIndex--;
-            showLightbox(imageGrid.children[currentImageIndex].src);
+            showLightbox(images[currentImageIndex].src);
         }
     });
 
     nextBtn.addEventListener('click', () => {
-        if (currentImageIndex < imageGrid.children.length - 1) {
+        if (currentImageIndex < images.length - 1) {
             currentImageIndex++;
-            showLightbox(imageGrid.children[currentImageIndex].src);
+            showLightbox(images[currentImageIndex].src);
         }
     });
 
@@ -56,16 +57,17 @@ document.addEventListener('DOMContentLoaded', () => {
         albumTitle.textContent = albumName.replace(/^\w/, c => c.toUpperCase());
         imageGrid.innerHTML = '';
 
+        // Fetch image URLs
         fetch(`albums/${albumName}/`)
             .then(response => response.text())
             .then(html => {
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(html, 'text/html');
-                const images = [...doc.images].map(img => img.src);
-                images.forEach(src => {
+                images = [...doc.images].map(img => {
                     const imgElement = document.createElement('img');
-                    imgElement.src = src;
+                    imgElement.src = img.src;
                     imageGrid.appendChild(imgElement);
+                    return imgElement;
                 });
             });
     }
