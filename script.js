@@ -9,18 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.querySelector('.prev');
     const nextBtn = document.querySelector('.next');
     const backToAlbumsBtn = document.getElementById('back-to-albums');
-    
+
     let currentAlbum = '';
     let currentImageIndex = 0;
     let images = [];
 
     albums.forEach(album => {
-        console.log(album);
         album.addEventListener('click', () => {
             currentAlbum = album.getAttribute('data-album');
             loadAlbum(currentAlbum);
-            console.log(currentAlbum);
-            console.log(`https://sgfoto.github.io/albums/${currentAlbum}/`);
         });
     });
 
@@ -32,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     imageGrid.addEventListener('click', (e) => {
         if (e.target.tagName === 'IMG') {
             currentImageIndex = [...imageGrid.children].indexOf(e.target);
-            showLightbox(e.target.src);
+            showLightbox(currentImageIndex);
         }
     });
 
@@ -43,41 +40,38 @@ document.addEventListener('DOMContentLoaded', () => {
     prevBtn.addEventListener('click', () => {
         if (currentImageIndex > 0) {
             currentImageIndex--;
-            showLightbox(images[currentImageIndex].src);
+            showLightbox(currentImageIndex);
         }
     });
 
     nextBtn.addEventListener('click', () => {
         if (currentImageIndex < images.length - 1) {
             currentImageIndex++;
-            showLightbox(images[currentImageIndex].src);
+            showLightbox(currentImageIndex);
         }
     });
 
-    function loadAlbum(albumName) {
+    async function loadAlbum(albumName) {
         document.getElementById('albums').classList.add('hidden');
         gallerySection.classList.remove('hidden');
         albumTitle.textContent = albumName.replace(/^\w/, c => c.toUpperCase());
         imageGrid.innerHTML = '';
+        images = [];
 
         // Fetch image URLs
-        fetch(`https://sgfoto.github.io/albums/${albumName}/`)
-            .then(response => response.text())
-            .then(html => {
-                console.log(html);
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                images = [...doc.images].map(img => {
-                    const imgElement = document.createElement('img');
-                    imgElement.src = img.src;
-                    imageGrid.appendChild(imgElement);
-                    return imgElement;
-                });
-            });
+        const response = await fetch(`https://api.github.com/repos/SGfoto/SGfoto.github.io/contents/albums/${albumName}`);
+        const data = await response.json();
+        if (JSON.stringify(data).includes("Not Found")) return;
+        for (let file of data) {
+            const imgElement = document.createElement('img');
+            imgElement.src = `https://sgfoto.github.io/${file.path}`;
+            imageGrid.appendChild(imgElement);
+            images.push(imgElement); // Add to images array
+        }
     }
 
-    function showLightbox(src) {
-        lightboxImage.src = src;
+    function showLightbox(index) {
+        lightboxImage.src = images[index].src;
         lightbox.classList.remove('hidden');
     }
 });
