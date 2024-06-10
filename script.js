@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
         album.addEventListener('click', () => {
             currentAlbum = album.getAttribute('data-album');
             loadAlbum(currentAlbum);
+            console.log(currentAlbum);
+            console.log(`https://sgfoto.github.io/albums/${currentAlbum}/`);
         });
     });
 
@@ -59,8 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
         imageGrid.innerHTML = '';
 
         // Fetch image URLs
-        console.log(albumName);
-        console.log(`https://sgfoto.github.io/albums/${albumName}/`);
         fetch(`https://sgfoto.github.io/albums/${albumName}/`)
             .then(response => response.text())
             .then(html => {
