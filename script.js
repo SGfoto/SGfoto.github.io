@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('albums').classList.add('hidden');
         gallerySection.classList.remove('hidden');
         albumTitle.textContent = albumName.replace(/^\w/, c => c.toUpperCase());
+        if (albumName.includes("supercarsunday24")) albumTitle.textContent = "SuperCar Sunday '24";
         imageGrid.innerHTML = '';
         images = [];
 
