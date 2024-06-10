@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const albums = document.querySelectorAll('.album-list');
+    const albums = document.querySelectorAll('.album');
     const gallerySection = document.getElementById('gallery');
     const albumTitle = document.getElementById('album-title');
     const imageGrid = document.querySelector('.image-grid');
